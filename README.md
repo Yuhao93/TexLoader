@@ -4,7 +4,8 @@ TexLoader
 An api to turn a tex expression into a graphic.
 
 Inside html, all data inside of the <eq> tags are converted into tex images.
-Font size is preserved by using the browser calculated font-size.
+Font size and color is preserved by using the browser calculated font-size and
+color.
 
 To run, simply load the library (closure or non closure depending on your usage)
 and run
@@ -28,9 +29,10 @@ Generating an image programatically
 -----------------------------------
 Similary, you can generate a tex image:
 ```js
-haodev.tex.equation('x^{y+z}', 25);
+haodev.tex.equation('x^{y+z}', 25, 'ffff0000');
 ```
-The above code returns an image that will generate the given equation.
+The above code returns an image that will generate an equation with a red size
+25 font.
 
 Calling the service directly
 ----------------------------
@@ -38,5 +40,6 @@ Finally, you can make an HTTP GET request to http://texloader.herokuapp.com/tex
 to download the image. You must include the following url parameters:
 - formula: The urlencoded formula of the tex equation
 - size: The font size of the formula
+- color: The color of the text, aarrggbb hexadecimal string
 The returned tex equation will be in PNG format.
 
