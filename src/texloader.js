@@ -5,11 +5,13 @@ haodev.tex = haodev.tex || {};
 /**
  * Converts all <eq> tags into latex expressions. It takes the calculated font
  * size of the <eq> tag.
- * @param {Element=} container Only look inside this element, if provided.
+ * @param {string=} opt_query The query to look for, defaults to all eq tags
+ * @param {Element=} opt_container Only look inside this element, if provided.
  */
-haodev.tex.convertEquations = function(container) {
-  var lookInside = container || document;
-  var elements = lookInside.getElementsByTagName('eq');
+haodev.tex.convertEquations = function(opt_query, opt_container) {
+  var lookInside = opt_container || document;
+  var query = opt_query || 'eq';
+  var elements = lookInside.querySelectorAll(query);
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var formula = element.textContent.trim();
