@@ -26,7 +26,7 @@ element with the id "container" and converts them into tex equations.
 
 Generating an image programatically
 -----------------------------------
-Similary, you can generate an image by hand:
+Similary, you can generate a tex image:
 ```js
 haodev.tex.equation('x^{y+z}', 25);
 ```
