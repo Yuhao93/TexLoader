@@ -2,6 +2,7 @@ TexLoader
 =========
 
 An api to turn a tex expression into a graphic.
+You can find it here <http://texloader.herokuapp.com>
 
 Inside html, all data inside of the <eq> tags are converted into tex images.
 Font size and color is preserved by using the browser calculated font-size and
