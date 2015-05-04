@@ -25,7 +25,8 @@ goog.require('goog.dom');
  * @param {Element=} opt_container Only look inside this element, if provided.
  */
 haodev.tex.convertEquations = function(opt_query, opt_container) {
-  var elements = goog.dom.query(opt_query || 'eq', opt_container);
+  var container = opt_container || document;
+  var elements = container.querySelectorAll(opt_query || 'eq');
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var formula = goog.dom.getTextContent(element).trim();
@@ -50,9 +51,9 @@ haodev.tex.convertEquations = function(opt_query, opt_container) {
 haodev.tex.hexString_ = function(colorString) {
   var colorRegex = /^rgba?\(\s*([0-9]+)\s*,\s*([0-9]+)\s*,\s*([0-9]+)\s*(,\s*([0-9]+\.?[0-9]*)\s*)?\)$/;
   var matches = colorRegex.exec(colorString);
-  var r = parseInt(matches[1]) & 0xFF;
-  var g = parseInt(matches[2]) & 0xFF;
-  var b = parseInt(matches[3]) & 0xFF;
+  var r = parseInt(matches[1], 10) & 0xFF;
+  var g = parseInt(matches[2], 10) & 0xFF;
+  var b = parseInt(matches[3], 10) & 0xFF;
   var a = (matches[4] && matches[5])
       ? Math.floor(255 * parseFloat(matches[5]))
       : 255;
@@ -80,7 +81,7 @@ haodev.tex.path_ = 'http://texloader.herokuapp.com/tex?';
 /**
  * Builds an <img> tag out of the given formula, size, and color.
  * @param {string} formula
- * @param {number} fontSize
+ * @param {string|number} fontSize
  * @param {string} color
  * @return {!Element}
  */
